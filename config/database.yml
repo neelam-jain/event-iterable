@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  # statement_limit means number of prepared statements to cache per connection
+  # See this article for more info https://devcenter.heroku.com/articles/postgres-logs-errors#out-of-memory-errors
+  host: localhost
+  username: postgres
+  password: postgres
+  statement_limit: 150
+  encoding: unicode
+  timeout: <%= ENV["DB_TIMEOUT"] || 10 %>
+  pool: <%= ENV["DB_POOL"] || ENV["RAILS_MAX_THREADS"] || 50 %>
+development:
+  <<: *default
+  database: iterable_development
+test:
+  <<: *default
+  database: iterable_test
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_CONNECTION_POOL_URL'] || ENV['DATABASE_URL'] %>
+  prepared_statements: false
+  advisory_locks: false

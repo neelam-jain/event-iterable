@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Your Iterable App</title>
+    <!-- Add your stylesheets and other head content here -->
+  </head>
+  <body>
+    <nav>
+      <%= link_to 'Home', root_path %>
+      <br>
+      <%= link_to 'Create Event A', events_create_event_a_path %>
+      <br>
+      <%= link_to 'Create Event B', events_create_event_b_path %>
+      <!-- Add other navigation links as needed -->
+    </nav>
+
+    <div>
+      <%= yield %>
+    </div>
+  </body>
+</html>
